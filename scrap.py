@@ -5,6 +5,7 @@ from datetime import datetime
 
 FECHA="17/03/2023"
 HORARIOS=["01:22", "06:03", "14:02", "20:00", "XX:XX", "XX:XX"]
+SESSION=""
 
 def check_availables():
     availables = []
@@ -12,7 +13,7 @@ def check_availables():
     url = "https://webventas.sofse.gob.ar/ajax/servicio/obtener_servicios.php"
     headers = {
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        'Cookie': 'G_ENABLED_IDPS=google; PHPSESSID=ped5qsk0ehv8d1kj5vuh0lps53'
+        'Cookie': 'G_ENABLED_IDPS=google; PHPSESSID=' + SESSION
     }
     params = {"fecha_seleccionada": FECHA, "sentido": 1}
     resp = requests.post(url, headers=headers, data=params)
