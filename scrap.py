@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+from datetime import datetime
 
 FECHA="17/03/2023"
 HORARIOS=["01:22", "06:03", "14:02", "20:00", "XX:XX", "XX:XX"]
@@ -30,10 +31,10 @@ def check_availables():
 
     with open("service.log", "a") as f:
         i = 0
+        f.write("======  % s  ======\n" % datetime.now().strftime("%H:%M:%S"))
         for d in availables:
             f.write("[% s] Pull: % s, Pri: % s\n" % (HORARIOS[i], d[0], d[1]))
             i+=1
-        f.write("================\n")
 
 while(True):
     check_availables()
